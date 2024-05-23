@@ -113,12 +113,23 @@ public class MinimalWeightPathFinder {
         while (!currentNode.equals(startNode)) {
             path.add(currentNode);
             currentNode = previousNodes.get(currentNode);
+            if (currentNode == null) {
+                // If currentNode is null, it means the start node is unreachable from the end node
+                break;
+            }
         }
-        path.add(startNode);
-        Collections.reverse(path);
+        if (currentNode != null) {
+            // If currentNode is not null, it means a path exists
+            path.add(startNode);
+            Collections.reverse(path);
 
-        result.put("weight", minWeights.get(endNode));
-        result.put("path", path);
+            result.put("weight", minWeights.get(endNode));
+            result.put("path", path);
+        } else {
+            // If currentNode is null, it means no path exists
+            result.put("weight", Double.MAX_VALUE);
+            result.put("path", Collections.emptyList());
+        }
         return result;
     }
 
