@@ -1,6 +1,12 @@
 # Minimal-weight-in-a-weighted-graph
 Minimal weight in a weighted graph
 
+
+To run:
+add custom run configuration using maven:
+
+        clean compile exec:java -Dexec.mainClass=MinimalWeightPathFinder
+
 -----------------------------------------------------------------------------------------------------------------
 Assignment C
 Objective:
